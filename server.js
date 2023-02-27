@@ -44,8 +44,6 @@ app.post("/upload", (req, res) => {
 
   const multerUpload = uploads.array(CLIENT_CONFIG.FILE_KEY);
 
-  console.log(req.body);
-
   multerUpload(req, res, (err) => {
     if (err) {
       console.error(err);
