@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-// const fileUpload = require("express-fileupload");
 const multer = require("multer");
 const cors = require("cors");
 const path = require("path");
@@ -18,8 +17,6 @@ app.use(express.json());
 
 app.use(credentials);
 app.use(cors(corsOptions));
-
-// app.use(fileUpload());
 
 const storage = multer.diskStorage({
   destination: (req, file, callback) => {
@@ -64,28 +61,6 @@ app.post("/upload", (req, res) => {
       });
     }
   });
-
-  console.log(req.files);
-  // Note: Should be tied up with client (file object)
-  const file = req.files.file;
-
-  // use path
-  console.log(__dirname);
-  // path.join(__dirname, "/public")
-  // file.mv(
-  //   path.join(__dirname, "..", "client", "public", "uploads", `${file.name}`),
-  //   (err) => {
-  //     if (err) {
-  //       console.error(err);
-  //       return res.status(500).send(err);
-  //     }
-
-  //     res.json({
-  //       fileName: file.name,
-  //       filePath: `/uploads/${file.name}`,
-  //     });
-  //   }
-  // );
 });
 
 app.listen(8080, () => console.log(`Server running on port ${PORT}`));
